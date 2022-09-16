@@ -9,6 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using KundeApp1.Models;
+using KundeApp1.DAL;
 
 namespace KundeApp1
 {
@@ -26,7 +27,7 @@ namespace KundeApp1
         {
             services.AddDbContext<KundeDB>(options => options.UseSqlite("Data source=Kunde.db"));
             services.AddControllers();
-            
+            services.AddScoped<IKundeRepository, KundeRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,6 +36,7 @@ namespace KundeApp1
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                //InitDb.Initialize(app);
             }
             else
             {

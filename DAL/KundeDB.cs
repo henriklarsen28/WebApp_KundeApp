@@ -10,6 +10,7 @@ namespace KundeApp1.Models
 {
     public class Kunder
     {
+        [Key]
         public int id { get; set; }
         public string fornavn { get; set; }
 
